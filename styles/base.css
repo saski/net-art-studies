@@ -1,0 +1,57 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #16130f;
+  color: #f4efe5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background: #16130f;
+}
+
+.work-surface {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#work-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.work-meta {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: grid;
+  gap: 4px;
+  max-width: min(360px, calc(100vw - 32px));
+  color: rgba(244, 239, 229, 0.82);
+  pointer-events: none;
+}
+
+.work-meta p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+#work-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+}

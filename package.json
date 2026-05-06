@@ -1,0 +1,12 @@
+{
+  "name": "net-art-studies",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 8080",
+    "test": "node --test",
+    "validate": "node tools/validate-sketches.mjs",
+    "check": "node --test && node tools/validate-sketches.mjs"
+  }
+}
