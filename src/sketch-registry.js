@@ -6,6 +6,10 @@ import {
   createSketch as createPointerBruises,
   manifest as pointerBruisesManifest,
 } from "./sketches/002-pointer-bruises/sketch.js";
+import {
+  createSketch as createWindowSilt,
+  manifest as windowSiltManifest,
+} from "./sketches/003-window-silt/sketch.js";
 
 export const sketches = new Map([
   [
@@ -20,6 +24,13 @@ export const sketches = new Map([
     {
       createSketch: createPointerBruises,
       manifest: pointerBruisesManifest,
+    },
+  ],
+  [
+    windowSiltManifest.id,
+    {
+      createSketch: createWindowSilt,
+      manifest: windowSiltManifest,
     },
   ],
 ]);

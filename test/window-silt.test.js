@@ -1,0 +1,34 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+
+import { createResizeSilt } from "../src/sketches/003-window-silt/sketch.js";
+
+test("createResizeSilt records the dominant viewport change as a deterministic stratum", () => {
+  const widthShift = createResizeSilt({
+    previousSize: { width: 320, height: 240 },
+    size: { width: 640, height: 260 },
+    random: fixedRandom,
+  });
+  const heightShift = createResizeSilt({
+    previousSize: { width: 320, height: 240 },
+    size: { width: 340, height: 520 },
+    random: fixedRandom,
+  });
+
+  assert.equal(widthShift.orientation, "vertical");
+  assert.equal(heightShift.orientation, "horizontal");
+  assert.ok(widthShift.thickness > 0);
+  assert.ok(heightShift.thickness > 0);
+  assert.deepEqual(
+    createResizeSilt({
+      previousSize: { width: 320, height: 240 },
+      size: { width: 640, height: 260 },
+      random: fixedRandom,
+    }),
+    widthShift,
+  );
+});
+
+function fixedRandom() {
+  return 0.5;
+}
