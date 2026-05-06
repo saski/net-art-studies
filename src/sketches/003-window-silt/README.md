@@ -2,7 +2,7 @@
 
 `003-window-silt` is a browser-native study about viewport changes leaving sediment-like strata on the canvas.
 
-The piece treats the browser window as pressure. The first load deposits an opening layer; later viewport changes add vertical or horizontal silt depending on the dominant resize direction.
+The piece treats the browser window as pressure. The first load deposits an opening layer; later viewport changes add vertical or horizontal silt depending on the dominant resize direction. Larger changes leave denser strata.
 
 Open it with:
 

@@ -29,6 +29,23 @@ test("createResizeSilt records the dominant viewport change as a deterministic s
   );
 });
 
+test("createResizeSilt makes larger viewport changes denser", () => {
+  const smallShift = createResizeSilt({
+    previousSize: { width: 320, height: 240 },
+    size: { width: 340, height: 245 },
+    random: fixedRandom,
+  });
+  const largeShift = createResizeSilt({
+    previousSize: { width: 320, height: 240 },
+    size: { width: 800, height: 250 },
+    random: fixedRandom,
+  });
+
+  assert.equal(smallShift.orientation, "vertical");
+  assert.equal(largeShift.orientation, "vertical");
+  assert.ok(largeShift.density > smallShift.density);
+});
+
 function fixedRandom() {
   return 0.5;
 }

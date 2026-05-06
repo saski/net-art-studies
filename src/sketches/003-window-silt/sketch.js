@@ -69,6 +69,7 @@ export function createResizeSilt({ previousSize, size, random }) {
     orientation,
     position: 0.18 + random() * 0.64,
     thickness: 12 + pressure * 90 + random() * 18,
+    density: 0.1 + pressure * 0.22 + random() * 0.035,
     offset: (random() - 0.5) * 0.12,
     crumble: 0.08 + random() * 0.2,
     phase: random() * Math.PI * 2,
@@ -78,7 +79,7 @@ export function createResizeSilt({ previousSize, size, random }) {
 }
 
 function drawStratum(context, stratum, width, height, time) {
-  const alpha = 0.08 + (1 - stratum.age) * 0.14;
+  const alpha = stratum.density * (0.55 + (1 - stratum.age) * 0.45);
   const wobble = Math.sin(time * 0.55 + stratum.phase) * stratum.crumble;
 
   context.save();
