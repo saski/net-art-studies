@@ -32,6 +32,7 @@ http://localhost:8080/?sketch=001-mud-field&seed=devotion
 | 002 | Pointer Bruises | What happens when pointer movement bruises the stained browser surface? | Pointer, time, viewport, seed | Started |
 | 003 | Window Silt | What happens when viewport changes deposit sediment? | Resize, time, viewport, seed | Started |
 | 004 | Key Echoes | What happens when keystrokes crack the browser surface? | Keyboard, time, viewport, seed | Started |
+| 005 | Wheel Ruts | What happens when inert wheel motion abrades the browser surface? | Wheel, time, viewport, seed | Started |
 
 ## Method
 

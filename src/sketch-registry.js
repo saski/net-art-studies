@@ -14,6 +14,10 @@ import {
   createSketch as createKeyEchoes,
   manifest as keyEchoesManifest,
 } from "./sketches/004-key-echoes/sketch.js";
+import {
+  createSketch as createWheelRuts,
+  manifest as wheelRutsManifest,
+} from "./sketches/005-wheel-ruts/sketch.js";
 
 export const sketches = new Map([
   [
@@ -42,6 +46,13 @@ export const sketches = new Map([
     {
       createSketch: createKeyEchoes,
       manifest: keyEchoesManifest,
+    },
+  ],
+  [
+    wheelRutsManifest.id,
+    {
+      createSketch: createWheelRuts,
+      manifest: wheelRutsManifest,
     },
   ],
 ]);
