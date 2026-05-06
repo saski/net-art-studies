@@ -23,25 +23,31 @@ export function createSketch({ canvas, context, random }) {
   }
 
   function start() {
+    canvas.addEventListener("pointerdown", handlePointerDown);
     canvas.addEventListener("pointermove", handlePointerMove);
     canvas.addEventListener("pointerleave", clearPreviousPoint);
     animationFrame = window.requestAnimationFrame(draw);
   }
 
   function stop() {
+    canvas.removeEventListener("pointerdown", handlePointerDown);
     canvas.removeEventListener("pointermove", handlePointerMove);
     canvas.removeEventListener("pointerleave", clearPreviousPoint);
     window.cancelAnimationFrame(animationFrame);
+  }
+
+  function handlePointerDown(event) {
+    const point = readPointerPoint(canvas, event);
+
+    addBruise(createContactBruise({ point, random }));
+    previousPoint = point;
   }
 
   function handlePointerMove(event) {
     const point = readPointerPoint(canvas, event);
 
     if (previousPoint) {
-      bruises.push(createPointerBruise({ point, previousPoint, random }));
-      if (bruises.length > MAX_BRUISES) {
-        bruises.shift();
-      }
+      addBruise(createPointerBruise({ point, previousPoint, random }));
     }
 
     previousPoint = point;
@@ -66,7 +72,28 @@ export function createSketch({ canvas, context, random }) {
     animationFrame = window.requestAnimationFrame(draw);
   }
 
+  function addBruise(bruise) {
+    bruises.push(bruise);
+    if (bruises.length > MAX_BRUISES) {
+      bruises.shift();
+    }
+  }
+
   return { resize, start, stop };
+}
+
+export function createContactBruise({ point, random }) {
+  return {
+    x: clamp01(point.x),
+    y: clamp01(point.y),
+    radius: 34 + random() * 20,
+    intensity: 0.24 + random() * 0.1,
+    decay: 0.005 + random() * 0.005,
+    phase: random() * Math.PI * 2,
+    driftX: (random() - 0.5) * 0.04,
+    driftY: (random() - 0.5) * 0.04,
+    age: 0,
+  };
 }
 
 export function createPointerBruise({ point, previousPoint, random }) {

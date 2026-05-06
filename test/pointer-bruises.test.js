@@ -1,7 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { createPointerBruise } from "../src/sketches/002-pointer-bruises/sketch.js";
+import {
+  createContactBruise,
+  createPointerBruise,
+} from "../src/sketches/002-pointer-bruises/sketch.js";
 
 test("createPointerBruise clamps coordinates and scales radius with pointer travel", () => {
   const slowBruise = createPointerBruise({
@@ -37,3 +40,21 @@ test("createPointerBruise clamps coordinates and scales radius with pointer trav
 function fixedRandom() {
   return 0.5;
 }
+
+test("createContactBruise creates a deterministic first-contact mark", () => {
+  const bruise = createContactBruise({
+    point: { x: -0.25, y: 1.4 },
+    random: fixedRandom,
+  });
+
+  assert.equal(bruise.x, 0);
+  assert.equal(bruise.y, 1);
+  assert.equal(bruise.age, 0);
+  assert.deepEqual(
+    bruise,
+    createContactBruise({
+      point: { x: -0.25, y: 1.4 },
+      random: fixedRandom,
+    }),
+  );
+});
