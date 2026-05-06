@@ -10,6 +10,10 @@ import {
   createSketch as createWindowSilt,
   manifest as windowSiltManifest,
 } from "./sketches/003-window-silt/sketch.js";
+import {
+  createSketch as createKeyEchoes,
+  manifest as keyEchoesManifest,
+} from "./sketches/004-key-echoes/sketch.js";
 
 export const sketches = new Map([
   [
@@ -31,6 +35,13 @@ export const sketches = new Map([
     {
       createSketch: createWindowSilt,
       manifest: windowSiltManifest,
+    },
+  ],
+  [
+    keyEchoesManifest.id,
+    {
+      createSketch: createKeyEchoes,
+      manifest: keyEchoesManifest,
     },
   ],
 ]);
